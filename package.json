@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "flow": "flow",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
