@@ -11,7 +11,7 @@
     "eslint": "^6.2.2",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "2.18.2",
-    "flow-bin": "^0.106.1"
+    "flow-bin": "^0.106.3"
   },
   "dependencies": {}
 }
