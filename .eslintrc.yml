@@ -4,3 +4,6 @@ parser: babel-eslint
 rules:
   max-classes-per-file: 'off'
   class-methods-use-this: 'off'
+
+env:
+  jest: true
