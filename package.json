@@ -17,6 +17,7 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "2.18.2",
     "flow-bin": "^0.106.3",
+    "husky": "^3.0.4",
     "jest": "^24.9.0"
   },
   "dependencies": {}
