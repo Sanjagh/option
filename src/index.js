@@ -1,11 +1,13 @@
 // @flow
-export interface Option {
+export interface Option<+T> {
   isDefined(): boolean;
 
   isEmpty(): boolean;
+
+  get(): T;
 }
 
-class None implements Option {
+class None implements Option<empty> {
   isDefined(): boolean {
     return false;
   }
@@ -13,15 +15,29 @@ class None implements Option {
   isEmpty(): boolean {
     return true;
   }
+
+  get() {
+    throw new Error('NO VALUE');
+  }
 }
 
-class Some implements Option {
+class Some<T> implements Option<T> {
+  value: T;
+
+  constructor(value: T) {
+    this.value = value;
+  }
+
   isDefined(): boolean {
     return true;
   }
 
   isEmpty(): boolean {
     return false;
+  }
+
+  get(): T {
+    return this.value;
   }
 }
 
@@ -29,8 +45,20 @@ function none(): None {
   return new None();
 }
 
-function some(): Some {
-  return new Some();
+function some<T>(value: T): Some<T> {
+  return new Some(value);
 }
 
-export { none, some };
+function option<T>(value: T): Option<T> {
+  return value == null ? none() : some(value);
+}
+
+const Opt = {
+  None,
+  Some,
+  none,
+  some,
+  option,
+};
+
+export { None, Some, none, some, option, Opt as default };
