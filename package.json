@@ -4,9 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "flow": "flow",
     "lint": "eslint .",
-    "test": "jest"
+    "flow": "flow",
+    "test": "jest",
+    "check": "npm run lint && npm run flow && npm run test"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

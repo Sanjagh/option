@@ -1,5 +1,5 @@
 config = {
-  hooks: { 'pre-commit': 'npm run lint && npm run flow && npm run test' },
+  hooks: { 'pre-commit': 'npm run check' },
 };
 
 module.exports = config;
