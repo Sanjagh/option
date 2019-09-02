@@ -14,6 +14,8 @@ export interface Option<+T> {
   getOrNull(): T | null;
 
   getOrUndefined(): T | void;
+
+  map<U>(m: (T) => U): Option<U>;
   /* eslint-enable */
 }
 
@@ -44,6 +46,10 @@ class None implements Option<empty> {
 
   getOrUndefined(): void {
     return undefined;
+  }
+
+  map(): None {
+    return new None();
   }
 }
 
@@ -80,6 +86,10 @@ class Some<T> implements Option<T> {
 
   getOrUndefined(): T {
     return this.get();
+  }
+
+  map<U>(m: (T) => U): Some<U> {
+    return new Some(m(this.get()));
   }
 }
 
