@@ -64,4 +64,12 @@ describe('Option', () => {
     expect(option(undefined).getOrNull()).toBe(null);
     expect(option(null).getOrNull()).toBe(null);
   });
+
+  test('getOrUndefined', () => {
+    expect(some(2).getOrUndefined()).toBe(2);
+    expect(none().getOrUndefined()).toBe(undefined);
+    expect(option('foobar').getOrUndefined()).toBe('foobar');
+    expect(option(undefined).getOrUndefined()).toBe(undefined);
+    expect(option(null).getOrUndefined()).toBe(undefined);
+  });
 });
