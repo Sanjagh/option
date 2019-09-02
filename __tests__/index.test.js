@@ -48,4 +48,12 @@ describe('Option', () => {
     expect(option(undefined).getOrElse('baz')).toBe('baz');
     expect(option(null).getOrElse('baz')).toBe('baz');
   });
+
+  test('default', () => {
+    expect(some(2).default()).toBe(2);
+    expect(none().default(7)).toBe(7);
+    expect(option('foobar').default('baz')).toBe('foobar');
+    expect(option(undefined).default('baz')).toBe('baz');
+    expect(option(null).default('baz')).toBe('baz');
+  });
 });

@@ -8,6 +8,8 @@ export interface Option<+T> {
   get(): T;
 
   getOrElse<U>(defaultValue: U): T | U;
+
+  default<U>(defaultValue: U): T | U;
   /* eslint-enable */
 }
 
@@ -26,6 +28,10 @@ class None implements Option<empty> {
 
   getOrElse<U>(defaultValue: U): U {
     return defaultValue;
+  }
+
+  default<U>(defaultValue: U): U {
+    return this.getOrElse(defaultValue);
   }
 }
 
@@ -50,6 +56,10 @@ class Some<T> implements Option<T> {
 
   getOrElse(): T {
     return this.get();
+  }
+
+  default(): T {
+    return this.getOrElse();
   }
 }
 
