@@ -40,4 +40,12 @@ describe('Option', () => {
     expect(option(undefined).get).toThrowError('NO VALUE');
     expect(option(null).get).toThrowError('NO VALUE');
   });
+
+  test('getOrElse', () => {
+    expect(some(2).getOrElse()).toBe(2);
+    expect(none().getOrElse(7)).toBe(7);
+    expect(option('foobar').getOrElse('baz')).toBe('foobar');
+    expect(option(undefined).getOrElse('baz')).toBe('baz');
+    expect(option(null).getOrElse('baz')).toBe('baz');
+  });
 });

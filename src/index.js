@@ -1,10 +1,14 @@
 // @flow
 export interface Option<+T> {
+  /* eslint-disable no-undef */
   isDefined(): boolean;
 
   isEmpty(): boolean;
 
   get(): T;
+
+  getOrElse<U>(defaultValue: U): T | U;
+  /* eslint-enable */
 }
 
 class None implements Option<empty> {
@@ -18,6 +22,10 @@ class None implements Option<empty> {
 
   get() {
     throw new Error('NO VALUE');
+  }
+
+  getOrElse<U>(defaultValue: U): U {
+    return defaultValue;
   }
 }
 
@@ -38,6 +46,10 @@ class Some<T> implements Option<T> {
 
   get(): T {
     return this.value;
+  }
+
+  getOrElse(): T {
+    return this.get();
   }
 }
 
