@@ -56,4 +56,12 @@ describe('Option', () => {
     expect(option(undefined).default('baz')).toBe('baz');
     expect(option(null).default('baz')).toBe('baz');
   });
+
+  test('getOrNull', () => {
+    expect(some(2).getOrNull()).toBe(2);
+    expect(none().getOrNull()).toBe(null);
+    expect(option('foobar').getOrNull()).toBe('foobar');
+    expect(option(undefined).getOrNull()).toBe(null);
+    expect(option(null).getOrNull()).toBe(null);
+  });
 });
