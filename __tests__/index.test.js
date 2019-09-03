@@ -85,7 +85,7 @@ describe('Option', () => {
 
     class Foo {
       get() {
-        return 'bar';
+        return 'foo';
       }
     }
 
@@ -99,6 +99,6 @@ describe('Option', () => {
       option(new Bar())
         .map((x) => x.toFoo())
         .map((x) => x.get()),
-    ).toEqual(option('bar'));
+    ).toEqual(option('foo'));
   });
 });
