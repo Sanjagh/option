@@ -101,4 +101,13 @@ describe('Option', () => {
         .map((x) => x.get()),
     ).toEqual(option('foo'));
   });
+
+  test('filter', () => {
+    const isEven = (x) => x % 2 === 0;
+
+    expect(some(2).filter(isEven)).toEqual(some(2));
+    expect(some(3).filter(isEven)).toEqual(none());
+    expect(option(null).filter(() => true)).toEqual(none());
+    expect(option(undefined).filter(() => true)).toEqual(none());
+  });
 });

@@ -16,6 +16,8 @@ export interface Option<+T> {
   getOrUndefined(): T | void;
 
   map<U>(m: (T) => U): Option<U>;
+
+  filter(p: (T) => boolean): Option<T>;
   /* eslint-enable */
 }
 
@@ -49,6 +51,10 @@ class None implements Option<empty> {
   }
 
   map(): None {
+    return new None();
+  }
+
+  filter(): None {
     return new None();
   }
 }
@@ -90,6 +96,10 @@ class Some<T> implements Option<T> {
 
   map<U>(m: (T) => U): Some<U> {
     return new Some(m(this.get()));
+  }
+
+  filter(p: (T) => boolean): Option<T> {
+    return p(this.get()) ? new Some(this.get()) : new None();
   }
 }
 
