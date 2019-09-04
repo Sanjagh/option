@@ -110,4 +110,13 @@ describe('Option', () => {
     expect(option(null).filter(() => true)).toEqual(none());
     expect(option(undefined).filter(() => true)).toEqual(none());
   });
+
+  test('reject', () => {
+    const isEven = (x) => x % 2 === 0;
+
+    expect(some(2).reject(isEven)).toEqual(none());
+    expect(some(3).reject(isEven)).toEqual(some(3));
+    expect(option(null).reject(() => false)).toEqual(none());
+    expect(option(undefined).reject(() => false)).toEqual(none());
+  });
 });

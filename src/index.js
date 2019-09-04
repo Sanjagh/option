@@ -18,6 +18,8 @@ export interface Option<+T> {
   map<U>(m: (T) => U): Option<U>;
 
   filter(p: (T) => boolean): Option<T>;
+
+  reject(p: (T) => boolean): Option<T>;
   /* eslint-enable */
 }
 
@@ -55,6 +57,10 @@ class None implements Option<empty> {
   }
 
   filter(): None {
+    return new None();
+  }
+
+  reject(): None {
     return new None();
   }
 }
@@ -100,6 +106,10 @@ class Some<T> implements Option<T> {
 
   filter(p: (T) => boolean): Option<T> {
     return p(this.get()) ? new Some(this.get()) : new None();
+  }
+
+  reject(p: (T) => boolean): Option<T> {
+    return this.filter((x: T) => !p(x));
   }
 }
 
