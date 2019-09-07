@@ -144,6 +144,12 @@ describe('Option', () => {
     expect(option(undefined).foldLeft('foobar', (_acc, _curr) => 2)).toBe('foobar');
   });
 
+  test('foldRight', () => {
+    expect(option(5).foldRight(2, (acc, curr) => acc - curr)).toBe(3);
+    expect(option(null).foldRight('foobar', (_acc, _curr) => 2)).toBe('foobar');
+    expect(option(undefined).foldRight('foobar', (_acc, _curr) => 2)).toBe('foobar');
+  });
+
   test('forEach', () => {
     const cb = jest.fn();
     some(5).forEach(cb);
