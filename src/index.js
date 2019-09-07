@@ -7,25 +7,25 @@ export interface Option<+T> {
 
   get(): T;
 
-  getOrElse<U>(defaultValue: U): T | U;
+  getOrElse<U>(U): T | U;
 
-  default<U>(defaultValue: U): T | U;
+  default<U>(U): T | U;
 
   getOrNull(): T | null;
 
   getOrUndefined(): T | void;
 
-  map<U>(m: (T) => U): Option<U>;
+  map<U>((T) => U): Option<U>;
 
-  filter(p: (T) => boolean): Option<T>;
+  filter((T) => boolean): Option<T>;
 
-  reject(p: (T) => boolean): Option<T>;
+  reject((T) => boolean): Option<T>;
 
-  bind<U>(m: (T) => Option<U>): Option<U>;
+  bind<U>((T) => Option<U>): Option<U>;
 
-  flatMap<U>(m: (T) => Option<U>): Option<U>;
+  flatMap<U>((T) => Option<U>): Option<U>;
 
-  fold<U>(initialValue: U, (T) => U): U;
+  fold<U>(U, (T) => U): U;
 
   forEach((T) => void): void;
   /* eslint-enable */
