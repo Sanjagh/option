@@ -137,4 +137,20 @@ describe('Option', () => {
     expect(option(null).fold('foobar', () => 2)).toBe('foobar');
     expect(option(undefined).fold('foobar', () => 2)).toBe('foobar');
   });
+
+  test('forEach', () => {
+    const cb = jest.fn();
+    some(5).forEach(cb);
+    expect(cb).toBeCalledTimes(1);
+    expect(cb).toBeCalledWith(5);
+    cb.mockClear();
+
+    option(null).forEach(cb);
+    expect(cb).toBeCalledTimes(0);
+    cb.mockClear();
+
+    option(undefined).forEach(cb);
+    expect(cb).toBeCalledTimes(0);
+    cb.mockClear();
+  });
 });
