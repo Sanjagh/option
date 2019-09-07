@@ -78,7 +78,7 @@ describe('Option', () => {
     expect(some(2).map((x) => x * 2)).toEqual(some(4));
     expect(some(2).map((x) => [x, x * 3, x - 2])).toEqual(some([2, 6, 0]));
     expect(some(['foo', 'bar', 'baz']).map((x) => x.join(''))).toEqual(some('foobarbaz'));
-    expect(none().map()).toEqual(none());
+    expect(none().map((x) => x * 2)).toEqual(none());
     expect(option('foobar').map((x) => x.split(''))).toEqual(option(['f', 'o', 'o', 'b', 'a', 'r']));
     expect(option(undefined).map((x) => x)).toEqual(none());
     expect(option(null).map((x) => x + 2)).toEqual(none());

@@ -56,24 +56,24 @@ class None implements Option<empty> {
     return undefined;
   }
 
-  map(): None {
+  map<U>(_m: (any) => U): None {
     return new None();
   }
 
-  filter(): None {
+  filter(_p: (any) => boolean): None {
     return new None();
   }
 
-  reject(): None {
+  reject(_p: (any) => boolean): None {
     return new None();
   }
 
-  bind(): None {
+  bind<U>(_m: (any) => Option<U>): None {
     return new None();
   }
 
-  flatMap(): None {
-    return this.bind();
+  flatMap<U>(m: (any) => Option<U>): None {
+    return this.bind(m);
   }
 }
 
@@ -96,11 +96,11 @@ class Some<T> implements Option<T> {
     return this.value;
   }
 
-  getOrElse(): T {
+  getOrElse<U>(_defaultValue: U): T {
     return this.get();
   }
 
-  default(): T {
+  default<U>(_defaultValue: U): T {
     return this.getOrElse();
   }
 
