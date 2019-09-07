@@ -5,6 +5,9 @@ rules:
   max-classes-per-file: 'off'
   class-methods-use-this: 'off'
   object-curly-newline: 'off'
+  no-unused-vars:
+    - 'error'
+    - argsIgnorePattern: '^_'
 
 env:
   jest: true
