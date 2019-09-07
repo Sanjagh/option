@@ -24,6 +24,8 @@ export interface Option<+T> {
   bind<U>(m: (T) => Option<U>): Option<U>;
 
   flatMap<U>(m: (T) => Option<U>): Option<U>;
+
+  fold<U>(initialValue: U, (T) => U): U;
   /* eslint-enable */
 }
 
@@ -74,6 +76,10 @@ class None implements Option<empty> {
 
   flatMap<U>(m: (any) => Option<U>): None {
     return this.bind(m);
+  }
+
+  fold<U>(initialValue: U, f: (any) => U): U {
+    return this.map(f).getOrElse(initialValue);
   }
 }
 
@@ -130,6 +136,10 @@ class Some<T> implements Option<T> {
 
   flatMap<U>(m: (T) => Option<U>): Option<U> {
     return this.bind(m);
+  }
+
+  fold<U>(initialValue: U, f: (T) => U): U {
+    return this.map(f).getOrElse(initialValue);
   }
 }
 

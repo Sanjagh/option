@@ -131,4 +131,10 @@ describe('Option', () => {
     expect(option(null).flatMap(() => some('2'))).toEqual(none());
     expect(option(undefined).flatMap(() => some('2'))).toEqual(none());
   });
+
+  test('fold', () => {
+    expect(some(5).fold('foobar', (x) => x * 2)).toBe(10);
+    expect(option(null).fold('foobar', () => 2)).toBe('foobar');
+    expect(option(undefined).fold('foobar', () => 2)).toBe('foobar');
+  });
 });
