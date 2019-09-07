@@ -125,4 +125,10 @@ describe('Option', () => {
     expect(option(null).bind(() => some('2'))).toEqual(none());
     expect(option(undefined).bind(() => some('2'))).toEqual(none());
   });
+
+  test('flatMap', () => {
+    expect(some(5).flatMap((n) => some('*'.repeat(n)))).toEqual(some('*****'));
+    expect(option(null).flatMap(() => some('2'))).toEqual(none());
+    expect(option(undefined).flatMap(() => some('2'))).toEqual(none());
+  });
 });

@@ -22,6 +22,8 @@ export interface Option<+T> {
   reject(p: (T) => boolean): Option<T>;
 
   bind<U>(m: (T) => Option<U>): Option<U>;
+
+  flatMap<U>(m: (T) => Option<U>): Option<U>;
   /* eslint-enable */
 }
 
@@ -68,6 +70,10 @@ class None implements Option<empty> {
 
   bind(): None {
     return new None();
+  }
+
+  flatMap(): None {
+    return this.bind();
   }
 }
 
@@ -120,6 +126,10 @@ class Some<T> implements Option<T> {
 
   bind<U>(m: (T) => Option<U>): Option<U> {
     return m(this.get());
+  }
+
+  flatMap<U>(m: (T) => Option<U>): Option<U> {
+    return this.bind(m);
   }
 }
 
