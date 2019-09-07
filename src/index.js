@@ -27,6 +27,8 @@ export interface Option<+T> {
 
   fold<U>(U, (T) => U): U;
 
+  foldLeft<U>(U, (U, T) => U): U;
+
   forEach((T) => void): void;
   /* eslint-enable */
 }
@@ -82,6 +84,10 @@ class None implements Option<empty> {
 
   fold<U>(initialValue: U, f: (any) => U): U {
     return this.map(f).getOrElse(initialValue);
+  }
+
+  foldLeft<U>(initialValue: U, _f: (U, any) => U): U {
+    return initialValue;
   }
 
   forEach(_f: any): void {}
@@ -144,6 +150,10 @@ class Some<T> implements Option<T> {
 
   fold<U>(initialValue: U, f: (T) => U): U {
     return this.map(f).getOrElse(initialValue);
+  }
+
+  foldLeft<U>(initialValue: U, f: (U, T) => U): U {
+    return f(initialValue, this.get());
   }
 
   forEach(f: (T) => void): void {
