@@ -119,4 +119,10 @@ describe('Option', () => {
     expect(option(null).reject(() => false)).toEqual(none());
     expect(option(undefined).reject(() => false)).toEqual(none());
   });
+
+  test('bind', () => {
+    expect(some(5).bind((n) => some('*'.repeat(n)))).toEqual(some('*****'));
+    expect(option(null).bind(() => some('2'))).toEqual(none());
+    expect(option(undefined).bind(() => some('2'))).toEqual(none());
+  });
 });

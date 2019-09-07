@@ -20,6 +20,8 @@ export interface Option<+T> {
   filter(p: (T) => boolean): Option<T>;
 
   reject(p: (T) => boolean): Option<T>;
+
+  bind<U>(m: (T) => Option<U>): Option<U>;
   /* eslint-enable */
 }
 
@@ -61,6 +63,10 @@ class None implements Option<empty> {
   }
 
   reject(): None {
+    return new None();
+  }
+
+  bind(): None {
     return new None();
   }
 }
@@ -110,6 +116,10 @@ class Some<T> implements Option<T> {
 
   reject(p: (T) => boolean): Option<T> {
     return this.filter((x: T) => !p(x));
+  }
+
+  bind<U>(m: (T) => Option<U>): Option<U> {
+    return m(this.get());
   }
 }
 
