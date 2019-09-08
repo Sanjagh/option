@@ -165,4 +165,27 @@ describe('Option', () => {
     expect(cb).toBeCalledTimes(0);
     cb.mockClear();
   });
+
+  describe('monad laws', () => {
+    test('left identity', () => {
+      const f = (x: number) => some(x);
+      const value = 2;
+
+      expect(some(value).bind(f)).toEqual(f(value));
+    });
+
+    test('right identity', () => {
+      const m = some(2);
+
+      expect(m.bind(some)).toEqual(m);
+    });
+
+    test('associativity', () => {
+      const m = some(2);
+      const f = (x) => some(x * 5);
+      const g = (x) => some(x - 4);
+
+      expect(m.bind(f).bind(g)).toEqual(m.bind((x) => f(x).bind(g)));
+    });
+  });
 });
