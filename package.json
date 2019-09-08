@@ -1,6 +1,6 @@
 {
   "name": "@sanjagh/option",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Out of the box solution for writing null-safe javascript",
   "main": "lib/index.js",
   "license": "MIT",
