@@ -1,8 +1,22 @@
 {
   "name": "opt-js",
   "version": "0.0.1",
+  "description": "Out of the box solution for writing null-safe javascript",
   "main": "lib/index.js",
   "license": "MIT",
+  "homepage": "https://github.com/sanjagh/opt-js#readme",
+  "repository": "github:sanjagh/opt-js",
+  "author": "Amirali Esmaeili",
+  "keywords": [
+    "option",
+    "optional",
+    "null-safe",
+    "monad",
+    "maybe",
+    "functional",
+    "fp",
+    "sanjagh"
+  ],
   "scripts": {
     "lint": "eslint .",
     "flow": "flow",
