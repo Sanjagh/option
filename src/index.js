@@ -179,7 +179,7 @@ function some<T>(value: T): Some<T> {
   return new Some(value);
 }
 
-function option<T>(value: T): Option<T> {
+function option<T>(value: ?T): Option<T> {
   return value == null ? none() : some(value);
 }
 
