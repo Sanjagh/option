@@ -1,0 +1,12 @@
+__tests__/
+src/
+flow-typed/
+.vim/
+.eslint*
+.flowconfig
+.gitignore
+babel.config.js
+.huskyrc.js
+.prettierrc.yml
+TODO
+
