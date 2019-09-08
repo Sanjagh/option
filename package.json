@@ -11,7 +11,8 @@
     "clean": "rm -rf lib",
     "babel": "babel -d lib src",
     "gen-types": "cp src/index.js lib/index.js.flow",
-    "build": "npm run clean && npm run babel && npm run gen-types"
+    "build": "npm run clean && npm run babel && npm run gen-types",
+    "prepack": "npm run check && npm run build"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
