@@ -1,11 +1,11 @@
 {
-  "name": "opt-js",
+  "name": "@sanjagh/option",
   "version": "0.1.0",
   "description": "Out of the box solution for writing null-safe javascript",
   "main": "lib/index.js",
   "license": "MIT",
-  "homepage": "https://github.com/sanjagh/opt-js#readme",
-  "repository": "github:sanjagh/opt-js",
+  "homepage": "https://github.com/sanjagh/option#readme",
+  "repository": "github:sanjagh/option",
   "author": "Amirali Esmaeili",
   "keywords": [
     "option",

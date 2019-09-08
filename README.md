@@ -1,11 +1,11 @@
-# Opt-js
+# Option
 
 Out of the box solution for writing null-safe javascript
 
 # Install
 
 ```sh
-npm install opt-js
+npm install @sanjagh/option
 
 ```
 
