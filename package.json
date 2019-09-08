@@ -1,15 +1,20 @@
 {
   "name": "opt-js",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "lib/index.js",
   "license": "MIT",
   "scripts": {
     "lint": "eslint .",
     "flow": "flow",
     "test": "jest",
-    "check": "npm run lint && npm run flow && npm run test"
+    "check": "npm run lint && npm run flow && npm run test",
+    "clean": "rm -rf lib",
+    "babel": "babel -d lib src",
+    "gen-types": "cp src/index.js lib/index.js.flow",
+    "build": "npm run clean && npm run babel && npm run gen-types"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.0",
     "@babel/core": "^7.5.5",
     "@babel/plugin-transform-flow-strip-types": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
