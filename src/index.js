@@ -32,6 +32,8 @@ export interface Option<+T> {
   foldRight<U>(U, (T, U) => U): U;
 
   forEach((T) => void): void;
+
+  toArray(): $ReadOnlyArray<T>;
   /* eslint-enable */
 }
 
@@ -97,6 +99,10 @@ class None implements Option<empty> {
   }
 
   forEach(_f: any): void {}
+
+  toArray() {
+    return [];
+  }
 }
 
 class Some<T> implements Option<T> {
@@ -168,6 +174,10 @@ class Some<T> implements Option<T> {
 
   forEach(f: (T) => void): void {
     f(this.get());
+  }
+
+  toArray(): Array<T> {
+    return [this.get()];
   }
 }
 

@@ -166,6 +166,12 @@ describe('Option', () => {
     cb.mockClear();
   });
 
+  test('toArray', () => {
+    expect(option(5).toArray()).toEqual([5]);
+    expect(option(null).toArray()).toEqual([]);
+    expect(option(undefined).toArray()).toEqual([]);
+  });
+
   describe('monad laws', () => {
     test('left identity', () => {
       const f = (x: number) => some(x);
